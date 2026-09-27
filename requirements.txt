@@ -1,0 +1,6 @@
+numpy
+scikit-learn
+torch
+transformers
+huggingface-hub
+faiss-cpu
