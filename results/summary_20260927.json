@@ -1,0 +1,99 @@
+{
+  "date": "2026-09-27",
+  "scope": "quick feasibility and mechanism diagnostics; not hardware performance claims",
+  "config_768d": {
+    "embedding": "sentence-transformers/all-mpnet-base-v2",
+    "dim": 768,
+    "k": 10,
+    "R": 512,
+    "page_bytes": 4096,
+    "vectors_per_page": 2,
+    "banks": 256,
+    "tR_us": 4
+  },
+  "scifact": {
+    "PQ48B": {
+      "compressed_R10": 0.705,
+      "rerank_R10": 1,
+      "oracle_page_prune": 0,
+      "presense_sense_reduction": 0
+    },
+    "PQ96B": {
+      "compressed_R10": 0.828,
+      "rerank_R10": 1,
+      "oracle_page_prune": 0,
+      "presense_sense_reduction": 0
+    },
+    "PQ192B": {
+      "compressed_R10": 0.905,
+      "rerank_R10": 1,
+      "oracle_page_prune": 0.063,
+      "post_submit_pre_sense_share": 0.28,
+      "presense_sense_reduction": 0.007
+    },
+    "PQ384B": {
+      "compressed_R10": 0.963,
+      "rerank_R10": 1,
+      "compressed_nDCG10": 0.599,
+      "rerank_nDCG10": 0.601,
+      "oracle_page_prune": 0.844,
+      "post_submit_pre_sense_share": 0.754,
+      "presense_sense_reduction": 0.58,
+      "device_pruned_feedback0": 9061,
+      "device_pruned_feedback4us": 8012
+    }
+  },
+  "fiqa": {
+    "PQ48B": {
+      "compressed_R10": 0.741,
+      "rerank_R10": 1,
+      "oracle_page_prune": 0,
+      "presense_sense_reduction": 0
+    },
+    "PQ96B": {
+      "compressed_R10": 0.83,
+      "rerank_R10": 1,
+      "oracle_page_prune": 0,
+      "presense_sense_reduction": 0
+    },
+    "PQ192B": {
+      "compressed_R10": 0.902,
+      "rerank_R10": 1,
+      "oracle_page_prune": 0.005,
+      "post_submit_pre_sense_share": 0.315,
+      "presense_sense_reduction": 0.002
+    },
+    "PQ384B": {
+      "compressed_R10": 0.956,
+      "rerank_R10": 1,
+      "compressed_nDCG10": 0.673,
+      "rerank_nDCG10": 0.673,
+      "oracle_page_prune": 0.89,
+      "post_submit_pre_sense_share": 0.855,
+      "presense_sense_reduction": 0.706,
+      "device_pruned_feedback0": 11086,
+      "device_pruned_feedback4us": 10533
+    }
+  },
+  "rabitq_768d": {
+    "code_bytes": 104,
+    "scifact": {
+      "qb8_compressed_R10": 0.786,
+      "candidate_R10": 1,
+      "rerank_R10": 1,
+      "oracle_page_prune_with_reconstruction_bound": 0
+    },
+    "fiqa": {
+      "qb8_compressed_R10": 0.828,
+      "candidate_R10": 1,
+      "rerank_R10": 1,
+      "oracle_page_prune_with_reconstruction_bound": 0
+    },
+    "caveat": "This uses a generic deterministic reconstruction-error bound, not RaBitQ-native confidence bounds or a full IVF-RaBitQ v2 implementation."
+  },
+  "open_risks": [
+    "optimized host scheduling",
+    "host cancellation",
+    "whether >90% compressed recall still warrants exact reranking/pre-sense"
+  ]
+}
